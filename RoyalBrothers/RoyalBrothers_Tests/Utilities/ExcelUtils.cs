@@ -57,7 +57,19 @@ namespace HoneyAndSpice_Tests.Utilities
 
                             {
 
-                                Place = GetValueOrDefault(row, "location"),
+                                City = GetValueOrDefault(row, "city"),
+                                PickupDate = GetValueOrDefault(row, "checkInDate"),
+                                PickupTime = GetValueOrDefault(row, "checkInTime"),
+                                DropoffDate = GetValueOrDefault(row,"checkOutDate"),
+                                DroppoffTime = GetValueOrDefault(row,"checkOutTime"),
+                                Location = GetValueOrDefault(row,"location"),
+                                Id = GetValueOrDefault(row, "id"),
+                                Name = GetValueOrDefault(row, "name"),
+                                Email = GetValueOrDefault(row, "email"),
+                                Mobile = GetValueOrDefault(row,"phone"),
+                                Password = GetValueOrDefault(row, "password"),
+
+
 
                                 
 

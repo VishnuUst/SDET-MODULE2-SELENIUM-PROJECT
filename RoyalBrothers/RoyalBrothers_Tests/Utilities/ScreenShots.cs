@@ -15,7 +15,7 @@ namespace RoyalBrothers_Tests.Utilities
             ITakesScreenshot screenshot = (ITakesScreenshot)driver;
             Screenshot screenshot1 = screenshot.GetScreenshot();
             string currDir = Directory.GetParent(@"../../../").FullName;
-            string filepath = currDir + "/ScreenShots/scs_oyo" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png";
+            string filepath = currDir + "/ScreenShots/scs_Royal" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png";
             screenshot1.SaveAsFile(filepath);
 
         }

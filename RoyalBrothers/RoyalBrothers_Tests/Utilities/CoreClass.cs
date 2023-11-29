@@ -24,7 +24,7 @@ namespace RoyalBrothers_Tests.Utilities
         {
             string currdir = Directory.GetParent(@"../../../").FullName;
             extent = new ExtentReports();
-            sparkReporter = new ExtentSparkReporter(currdir + "/ExtentReports/extent-report-oyo" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".html");
+            sparkReporter = new ExtentSparkReporter(currdir + "/ExtentReports/extent-report-Royal" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".html");
             extent.AttachReporter(sparkReporter);
             ReadConfig.ReadConfiguration();
             if (ReadConfig.properties["browser"].ToLower() == "chrome")

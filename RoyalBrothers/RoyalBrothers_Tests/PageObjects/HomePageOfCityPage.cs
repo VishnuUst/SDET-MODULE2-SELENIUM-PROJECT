@@ -1,10 +1,12 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -19,9 +21,10 @@ namespace RoyalBrothers_Tests.PageObjects
             this.driver = driver ?? throw new ArgumentException(nameof(driver));
             PageFactory.InitElements(driver, this);
         }
+
         /* [FindsBy(How = How.XPath,Using = "(//a[@class='modal-trigger'])[position()=1]]")]*/
         /* private IWebElement?SignUpClick{ get; set; }*/
-        IWebElement GetVehicleSelection(string id)
+        public IWebElement GetVehicleSelection(string id)
         {
             return driver.FindElement(By.XPath("(//a[@class='modal-trigger'])[position()=" + id + "]"));
         }
@@ -29,6 +32,7 @@ namespace RoyalBrothers_Tests.PageObjects
         {
             return GetVehicleSelection(id)?.Text;
         }
+       
         public void CheckInVehicle(string id)
         {
             GetVehicleSelection(id)?.Click();
@@ -39,29 +43,77 @@ namespace RoyalBrothers_Tests.PageObjects
         {
             DateInput?.Click();
         }
-        IWebElement ? FromDateClicked(string id)
+        IWebElement ? FromDateClicked(string date)
         {
-            return driver.FindElement(By.XPath("//td[@role='presentation']//following::div[text()='29']//ancestor::tr[1]"));
+            return driver.FindElement(By.XPath("(//table[@id='pickup-date-search_table'])//following::div[@aria-label='"+date+"' and contains(@class,'infocus')]"));
         }
-        public string?GetDateClick(string id)
+        public string?GetDateClick(string date)
         {
-            return FromDateClicked(id)?.Text;
+            return FromDateClicked(date)?.Text;
         }
-        public void DateClicked(string id)
+        public void DateClicked(string date)
         {
-           FromDateClicked(id)?.Click();
+           FromDateClicked(date)?.Click();
         }
-        IWebElement? FromTimeClicked(string id)
+        IWebElement? FromTimeClicked(string pickTime)
         {
-            return driver.FindElement(By.XPath("(//li[@class='picker__list-item'])[position()=5]"));
+            
+            return driver.FindElement(By.XPath("(//li[@class='picker__list-item' and text()='"+pickTime+"'])[position()=1]"));
         }
-        public string? GetTimeClick(string id)
+        public string? GetTimeClick(string pickTime)
         {
-            return FromTimeClicked(id)?.Text;
+            return FromTimeClicked(pickTime)?.Text;
         }
-        public void TimeClicked(string id)
+        public void TimeClicked(string pickTime)
         {
-            FromTimeClicked(id)?.Click();
+           
+            FromTimeClicked(pickTime)?.Click();
+        }
+        IWebElement? NextDateClicked(string id)
+        {
+            return driver.FindElement(By.XPath("(//div[@class='picker__nav--next'])[position()=2]"));
+        }
+        public string? GetNextDateClicked(string id)
+        {
+            return NextDateClicked(id)?.Text;
+        }
+        public void NextDateClickedfunction(string id)
+        {
+            NextDateClicked(id)?.Click();   
+        }
+        IWebElement? ToDateClicked(string date)
+        {
+            return driver.FindElement(By.XPath("(//table[@id='dropoff-date-search_table'])//following::div[@aria-label='"+date+"' and contains(@class,'infocus')]"));
+        }
+        public string? GetToDateClick(string date)
+        {
+            return ToDateClicked(date)?.Text;
+        }
+        public void ToDateClickedFunction(string date)
+        {
+            ToDateClicked(date)?.Click();
+        }
+
+        IWebElement? ToTimeClicked(string droptime)
+        {
+
+            return driver?.FindElement(By.XPath("(//li[@class='picker__list-item' and text()='"+droptime+"'])[position()=2]"));
+        }
+        public string? ToTimeClick(string droptime)
+        {
+            return ToTimeClicked(droptime)?.Text;
+        }
+        public void ToClicked(string droptime )
+        {
+            ToTimeClicked(droptime)?.Click();
+        }
+        [FindsBy(How=How.XPath,Using = "(//button[@class='buttonLarge'])[position()=1]")]
+        private IWebElement? SubmitButtonClick { get; set; }
+        public SelectParticularVehiclePage SubmitButtonFunction()
+        {
+            SubmitButtonClick?.Click();
+            return new SelectParticularVehiclePage(driver);
+                 
         }
     }
 }
