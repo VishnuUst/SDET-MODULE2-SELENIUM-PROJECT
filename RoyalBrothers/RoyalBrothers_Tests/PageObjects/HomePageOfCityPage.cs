@@ -24,8 +24,15 @@ namespace RoyalBrothers_Tests.PageObjects
 
         /* [FindsBy(How = How.XPath,Using = "(//a[@class='modal-trigger'])[position()=1]]")]*/
         /* private IWebElement?SignUpClick{ get; set; }*/
+        //public void scrollSearchedData()
+        //{
+        //    IWebElement? scrollsession = driver.FindElement(By.XPath("(//div[@id='hourly']//button[text()='BOOK NOW'])[position()=1]"));
+        //    Actions actions = new Actions(driver);
+        //    actions.MoveToElement(scrollsession).Build().Perform();
+        //}
         public IWebElement GetVehicleSelection(string id)
         {
+          
             return driver.FindElement(By.XPath("(//a[@class='modal-trigger'])[position()=" + id + "]"));
         }
         public string? GetVehicleSet(string id)
@@ -35,6 +42,9 @@ namespace RoyalBrothers_Tests.PageObjects
        
         public void CheckInVehicle(string id)
         {
+            //Actions actions = new Actions(driver);
+            //actions.MoveToLocation(364, 1394).Build().Perform();
+            //Console.WriteLine(GetVehicleSelection(id).Location);
             GetVehicleSelection(id)?.Click();
         }
         [FindsBy(How = How.XPath,Using ="(//div[@class='input-container'])[position()=1]")]
@@ -57,8 +67,9 @@ namespace RoyalBrothers_Tests.PageObjects
         }
         IWebElement? FromTimeClicked(string pickTime)
         {
-            
-            return driver.FindElement(By.XPath("(//li[@class='picker__list-item' and text()='"+pickTime+"'])[position()=1]"));
+            ////ul[@class='picker__list'][1]/li[text()='11:30 AM']
+            ///(//li[@class='picker__list-item' and text()='"+pickTime+"'])[position()=1]
+            return driver.FindElement(By.XPath("//ul[@class='picker__list'][1]/li[text()='"+pickTime+"'][1]"));
         }
         public string? GetTimeClick(string pickTime)
         {
@@ -96,8 +107,8 @@ namespace RoyalBrothers_Tests.PageObjects
 
         IWebElement? ToTimeClicked(string droptime)
         {
-
-            return driver?.FindElement(By.XPath("(//li[@class='picker__list-item' and text()='"+droptime+"'])[position()=2]"));
+            //(//li[@class='picker__list-item' and text()='"+droptime+"'])[position()=2]
+            return driver?.FindElement(By.XPath("//ul[@class='picker__list'][1]/li[text()='"+droptime+"'][1]"));
         }
         public string? ToTimeClick(string droptime)
         {
@@ -115,5 +126,6 @@ namespace RoyalBrothers_Tests.PageObjects
             return new SelectParticularVehiclePage(driver);
                  
         }
+        
     }
 }

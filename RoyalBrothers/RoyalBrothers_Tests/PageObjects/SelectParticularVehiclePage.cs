@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,18 @@ namespace RoyalBrothers_Tests.PageObjects
             this.driver = driver??throw new ArgumentException(nameof(driver));
             PageFactory.InitElements(driver, this);
         }
+        
         [FindsBy(How=How.XPath,Using = "//input[@class='loc_input'][position()=1]")]
         private IWebElement? LocationClicking {  get; set; }
         public void LocationClick()
         {
             LocationClicking?.Click();
+        }
+        [FindsBy(How=How.XPath,Using = "//input[@placeholder='Location'][1]")]
+        private IWebElement? InputLoc {  get; set; }
+        public void Locationsend()
+        {
+            InputLoc?.SendKeys("Central Railway station (Opp to KSRTC Bus terminal)");
         }
          IWebElement? LocationItemClick(string loc)
         {

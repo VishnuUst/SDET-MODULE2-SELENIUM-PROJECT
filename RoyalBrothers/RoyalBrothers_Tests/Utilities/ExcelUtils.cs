@@ -104,6 +104,92 @@ namespace HoneyAndSpice_Tests.Utilities
         }
 
 
+        public static List<StoreData> ReadExcelDataStore(string excelFilePath, string sheetName)
+        {
+            List<StoreData> store = new List<StoreData>();
+            Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+            using (var stream = new FileStream(excelFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+
+            {
+
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
+
+                {
+
+                    var result = reader.AsDataSet(new ExcelDataSetConfiguration()
+
+                    {
+
+                        ConfigureDataTable = (_) => new ExcelDataTableConfiguration()
+
+                        {
+
+                            UseHeaderRow = true,
+
+                        }
+
+                    });
+
+
+
+                    var dataTable = result.Tables[sheetName];
+
+
+
+                    if (dataTable != null)
+
+                    {
+
+                        foreach (DataRow row in dataTable.Rows)
+
+                        {
+
+                            StoreData excelData = new StoreData
+
+                            {
+
+                                City = GetValueOrDefault(row, "city"),
+                                Item = GetValueOrDefault(row, "item"),
+                                SortBy = GetValueOrDefault(row,"sortBy"),
+                                Qty = GetValueOrDefault(row,"qty"),
+                                Email = GetValueOrDefault(row, "email"),
+                                FirstName = GetValueOrDefault(row,"firstname"),
+                                LastName = GetValueOrDefault(row,"lastname"),
+                                Address = GetValueOrDefault(row, "address"),
+
+
+
+
+
+
+
+                            };
+
+
+
+                            store.Add(excelData);
+
+                        }
+
+                    }
+
+                    else
+
+                    {
+
+                        Console.WriteLine($"Sheet '{sheetName}' not found in the Excel file.");
+
+                    }
+
+                }
+
+            }
+
+
+
+            return store;
+
+        }
 
         static string GetValueOrDefault(DataRow row, string columnName)
 

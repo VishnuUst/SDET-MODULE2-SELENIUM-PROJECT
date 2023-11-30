@@ -23,11 +23,21 @@ namespace RoyalBrothers_Tests.PageObjects
             SortyBy?.Click();
 
         }
-        [FindsBy(How=How.XPath,Using = "//ul[@role='list']//child::span[text()='Price, low to high']")]
-        private IWebElement?SortByList { get; set; }
-        public void SortByListClick()
+        //[FindsBy(How=How.XPath,Using = "//ul[@role='list']//child::span[text()='Price, low to high']")]
+        IWebElement GetSort(string sortby)
         {
-            SortByList?.Click();
+            return driver.FindElement(By.XPath("//ul[@role='list']//child::span[text()='"+sortby+"']"));
+
+        }
+        public string? SortByText(string sortby)
+        {
+            return GetSort(sortby)?.Text;
+        }
+       // private IWebElement?SortByList { get; set; }
+        public SortedItemPage SortByListClick(string sortby)
+        {
+            GetSort(sortby)?.Click();
+            return new SortedItemPage(driver);
         }
     }
 }

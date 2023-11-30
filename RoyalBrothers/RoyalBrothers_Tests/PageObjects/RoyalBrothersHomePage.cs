@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,11 @@ namespace RoyalBrothers_Tests.PageObjects
         
         public HomePageOfCityPage SearchCityBox(string city)
         {
+            DefaultWait<IWebDriver> wait = new DefaultWait<IWebDriver>(driver);
+            wait.PollingInterval = TimeSpan.FromMilliseconds(100);
+            wait.Timeout = TimeSpan.FromSeconds(10);
+            wait.Until(d => SearchCity.Displayed);
+
             SearchCity?.SendKeys(city);
             driver.FindElement(By.LinkText(city)).Click();
             return new HomePageOfCityPage(driver);
