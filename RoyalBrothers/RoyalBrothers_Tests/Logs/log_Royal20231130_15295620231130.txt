@@ -1,2 +1,0 @@
-2023-11-30 15:30:02.406 +05:30 [ERR] City Search Test Failed!!!
-2023-11-30 15:30:08.159 +05:30 [ERR] City Search Test Failed!!!

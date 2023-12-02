@@ -1,3 +1,0 @@
-2023-11-29 23:28:51.337 +05:30 [INF] The Search Bike Page Loaded correctly After selecting City!!!
-2023-11-29 23:28:55.880 +05:30 [ERR] Search City test-Failed
-2023-11-29 23:29:38.778 +05:30 [INF] Book A vehicle Test-Fail

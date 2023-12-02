@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace RoyalBrothers_Tests.Utilities
 {
@@ -39,6 +40,15 @@ namespace RoyalBrothers_Tests.Utilities
             driver.Manage().Window.Maximize();
 
         }
+        public void LogFunction()
+        {
+            string? currDir = Directory.GetParent(@"../../../").FullName;
+            string? logfilepath = currDir + "/Logs/log_Royal" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt";
+            Log.Logger = new LoggerConfiguration().
+                WriteTo.Console().
+                WriteTo.File(logfilepath, rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+        }
         //public static void ScrollIntoView(IWebDriver driver,IWebElement element)
         //{
         //    IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
@@ -50,6 +60,7 @@ namespace RoyalBrothers_Tests.Utilities
         {
             driver.Quit();
             extent.Flush();
+            Log.CloseAndFlush();
         }
 
     }

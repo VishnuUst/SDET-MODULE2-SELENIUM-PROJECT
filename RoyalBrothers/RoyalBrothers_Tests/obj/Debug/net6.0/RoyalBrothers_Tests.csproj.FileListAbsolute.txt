@@ -148,7 +148,6 @@ C:\Selenium_Project\RoyalBrothers\RoyalBrothers_Tests\obj\Debug\net6.0\refint\Ro
 C:\Selenium_Project\RoyalBrothers\RoyalBrothers_Tests\obj\Debug\net6.0\RoyalBrothers_Tests.pdb
 C:\Selenium_Project\RoyalBrothers\RoyalBrothers_Tests\obj\Debug\net6.0\RoyalBrothers_Tests.genruntimeconfig.cache
 C:\Selenium_Project\RoyalBrothers\RoyalBrothers_Tests\obj\Debug\net6.0\ref\RoyalBrothers_Tests.dll
-C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net6.0\WebDriver.dll
 C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net6.0\testhost.dll
 C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net6.0\testhost.exe
 C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net6.0\selenium-manager\linux\selenium-manager
@@ -186,6 +185,7 @@ C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net
 C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net6.0\nunit.framework.dll
 C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net6.0\RazorEngine.NetCore.dll
 C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net6.0\WebDriver.Support.dll
+C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net6.0\WebDriver.dll
 C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net6.0\Serilog.dll
 C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net6.0\Serilog.Sinks.Console.dll
 C:\SDET-MODULE2-SELENIUM-PROJECT\RoyalBrothers\RoyalBrothers_Tests\bin\Debug\net6.0\Serilog.Sinks.File.dll

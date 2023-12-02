@@ -1,2 +1,0 @@
-2023-11-30 15:36:29.849 +05:30 [INF] City Search test Success!!!
-2023-11-30 15:36:34.821 +05:30 [INF] City Search test Success!!!

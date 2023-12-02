@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
+using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,12 @@ namespace RoyalBrothers_Tests.PageObjects
     internal class HomePageOfCityPage
     {
         IWebDriver? driver;
+        DefaultWait<IWebDriver> wait;
         public HomePageOfCityPage(IWebDriver? driver)
         {
             this.driver = driver ?? throw new ArgumentException(nameof(driver));
             PageFactory.InitElements(driver, this);
+          
         }
 
         /* [FindsBy(How = How.XPath,Using = "(//a[@class='modal-trigger'])[position()=1]]")]*/
@@ -32,7 +35,7 @@ namespace RoyalBrothers_Tests.PageObjects
         //}
         public IWebElement GetVehicleSelection(string id)
         {
-          
+            
             return driver.FindElement(By.XPath("(//a[@class='modal-trigger'])[position()=" + id + "]"));
         }
         public string? GetVehicleSet(string id)
@@ -42,20 +45,23 @@ namespace RoyalBrothers_Tests.PageObjects
        
         public void CheckInVehicle(string id)
         {
-            //Actions actions = new Actions(driver);
-            //actions.MoveToLocation(364, 1394).Build().Perform();
-            //Console.WriteLine(GetVehicleSelection(id).Location);
+            //wait =new DefaultWait<IWebDriver>(driver);
+            //wait.PollingInterval = TimeSpan.FromMilliseconds(100);
+            //wait.Timeout = TimeSpan.FromSeconds(10);
+            //wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+            //wait.Until(s=>ExpectedConditions.ElementToBeClickable(GetVehicleSelection(id)));
             GetVehicleSelection(id)?.Click();
         }
         [FindsBy(How = How.XPath,Using ="(//div[@class='input-container'])[position()=1]")]
         private IWebElement? DateInput {  get; set; }
         public void CheckDateInputClickable()
         {
+            //wait.Until(d => DateInput);
             DateInput?.Click();
         }
         IWebElement ? FromDateClicked(string date)
         {
-            return driver.FindElement(By.XPath("(//table[@id='pickup-date-search_table'])//following::div[@aria-label='"+date+"' and contains(@class,'infocus')]"));
+            return driver.FindElement(By.XPath("(//table[@id='pickup-date-search_table']//following::div[contains(@class,'infocus')])[position()="+date+"]"));
         }
         public string?GetDateClick(string date)
         {
@@ -69,7 +75,7 @@ namespace RoyalBrothers_Tests.PageObjects
         {
             ////ul[@class='picker__list'][1]/li[text()='11:30 AM']
             ///(//li[@class='picker__list-item' and text()='"+pickTime+"'])[position()=1]
-            return driver.FindElement(By.XPath("//ul[@class='picker__list'][1]/li[text()='"+pickTime+"'][1]"));
+            return driver.FindElement(By.XPath("//ul[@class='picker__list'][1]/li["+pickTime+"]"));
         }
         public string? GetTimeClick(string pickTime)
         {
@@ -94,7 +100,7 @@ namespace RoyalBrothers_Tests.PageObjects
         }
         IWebElement? ToDateClicked(string date)
         {
-            return driver.FindElement(By.XPath("(//table[@id='dropoff-date-search_table'])//following::div[@aria-label='"+date+"' and contains(@class,'infocus')]"));
+            return driver.FindElement(By.XPath("(//table[@id='dropoff-date-search_table'])//following::div[contains(@class,'infocus')][position()="+date+"]"));
         }
         public string? GetToDateClick(string date)
         {
@@ -108,7 +114,7 @@ namespace RoyalBrothers_Tests.PageObjects
         IWebElement? ToTimeClicked(string droptime)
         {
             //(//li[@class='picker__list-item' and text()='"+droptime+"'])[position()=2]
-            return driver?.FindElement(By.XPath("//ul[@class='picker__list'][1]/li[text()='"+droptime+"'][1]"));
+            return driver?.FindElement(By.XPath("//ul[@class='picker__list'][1]/li[text()='" + droptime + "'][1]"));
         }
         public string? ToTimeClick(string droptime)
         {

@@ -20,21 +20,17 @@ namespace RoyalBrothers_Tests.TestScripts
     {
        
         [Test,Order(1)]
+        [Author("Vishnu","vishnu.thulaseedharanpillai@ust.com")]
         
         [Category("RegressionTest")]
         public void SeacrhCityTest()
         {
-           
-            string? currDir = Directory.GetParent(@"../../../").FullName;
-            string? logfilepath = currDir + "/Logs/log_Royal" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt";
-            Log.Logger = new LoggerConfiguration().
-                WriteTo.Console().
-                WriteTo.File(logfilepath, rollingInterval: RollingInterval.Day)
-                .CreateLogger();
+
+            LogFunction();
             RoyalBrothersHomePage home = new(driver);
             
             Thread.Sleep(3000);
-            DefaultWait<IWebDriver> fluentwait = new DefaultWait<IWebDriver>(driver);
+            //DefaultWait<IWebDriver> fluentwait = new DefaultWait<IWebDriver>(driver);
 
             //IWebElement ele = fluentwait.Until(x=>x.FindElement(By.XPath("//label[text()='Duration']")));
             //Actions actions = new Actions(driver);
@@ -107,9 +103,10 @@ namespace RoyalBrothers_Tests.TestScripts
                 string? password = inputdata.Password;
                 Console.WriteLine("city"+cityname);
                 Console.WriteLine("time"+checkinTime);
+                Thread.Sleep(5000);
                 var data = home.SearchCityBox(cityname);
                 //ScreenShots.TakeScreenShot(driver);
-                Thread.Sleep(2000);
+                Thread.Sleep(3000);
 
                 //try
                 //{
@@ -134,22 +131,22 @@ namespace RoyalBrothers_Tests.TestScripts
                 //((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", elementToScrollTo);
                 //Thread.Sleep(2000);
                 //data.scrollSearchedData();
-                //Thread.Sleep(4000);
+               // Thread.Sleep(4000);
                 data.CheckInVehicle(id);
-                Thread.Sleep(3000);
-
+                Thread.Sleep(4000);
+                ScreenShots.TakeScreenShot(driver);
                 data.CheckDateInputClickable();
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
                 data.DateClicked(checkinDate);
                 Thread.Sleep(2000);
                 data.TimeClicked(checkinTime);
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
                 data.NextDateClickedfunction(id);
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
                 data.ToDateClickedFunction(checkoutDate);
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
                 data.ToClicked(checkoutTime);
-                Thread.Sleep(5000);
+                Thread.Sleep(3000);
                var search = data.SubmitButtonFunction();
                 Thread.Sleep(4000);
                 search.LocationClick();
@@ -158,29 +155,36 @@ namespace RoyalBrothers_Tests.TestScripts
                 Thread.Sleep(4000);
                 search.LocationClicked(location);
                 ScreenShots.TakeScreenShot(driver);
-                Thread.Sleep(4000);
+                Thread.Sleep(3000);
+               
+                var book = search.BookButtonClicked();
+                Thread.Sleep(3000);
+                book.InputBox(name);
+                Thread.Sleep(2000);
+                book.EmailBox(email);
+                Thread.Sleep(2000);
+                book.MobileInputs(mobile);
+                Thread.Sleep(2000);
+                book.PasswordBox(password);
+                Thread.Sleep(3000);
+                ScreenShots.TakeScreenShot(driver);
                 try
                 {
                     Console.WriteLine(driver.Title);
-                    Assert.AreEqual("Search | Royalbrothers.com", driver.Title);
+                    Assert.That(driver.Url.Contains("login"));
                     Log.Information("Book A vehicle Test-Pass");
                     test = extent.CreateTest("Book Vehicle Test Report");
                     test.Pass("The Book Vehicle  Test-Passed");
                 }
                 catch (AssertionException)
                 {
-                    Log.Information("Book A vehicle Test-Fail");
+                    Log.Error("Book A vehicle Test-Fail");
                     test = extent.CreateTest("Book Vehicle Test Report");
-                    test.Pass("The Book Vehicle  Test-Failed");
+                    test.Fail("The Book Vehicle  Test-Failed");
                 }
-                var book = search.BookButtonClicked();
-                book.InputBox(name);
-                book.EmailBox(email);
-                book.MobileInputs(mobile);
-                book.PasswordBox(password);
 
             }
-            Thread.Sleep(5000);
+            
             
 
         }
