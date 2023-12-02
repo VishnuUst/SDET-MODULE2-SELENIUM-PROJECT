@@ -106,7 +106,7 @@ namespace RoyalBrothers_Tests.TestScripts
                 Thread.Sleep(5000);
                 var data = home.SearchCityBox(cityname);
                 //ScreenShots.TakeScreenShot(driver);
-                Thread.Sleep(3000);
+              //  Thread.Sleep(3000);
 
                 //try
                 //{
@@ -149,6 +149,7 @@ namespace RoyalBrothers_Tests.TestScripts
                 Thread.Sleep(3000);
                var search = data.SubmitButtonFunction();
                 Thread.Sleep(4000);
+                Log.Information("Search Vehicle Button clicked");
                 search.LocationClick();
                 Thread.Sleep(4000);
                 search.Locationsend();
@@ -167,6 +168,7 @@ namespace RoyalBrothers_Tests.TestScripts
                 Thread.Sleep(2000);
                 book.PasswordBox(password);
                 Thread.Sleep(3000);
+                Log.Information("Book Vehicle success");
                 ScreenShots.TakeScreenShot(driver);
                 try
                 {

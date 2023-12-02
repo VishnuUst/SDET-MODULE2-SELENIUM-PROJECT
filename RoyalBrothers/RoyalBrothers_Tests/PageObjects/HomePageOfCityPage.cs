@@ -45,12 +45,15 @@ namespace RoyalBrothers_Tests.PageObjects
        
         public void CheckInVehicle(string id)
         {
-            //wait =new DefaultWait<IWebDriver>(driver);
-            //wait.PollingInterval = TimeSpan.FromMilliseconds(100);
-            //wait.Timeout = TimeSpan.FromSeconds(10);
-            //wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-            //wait.Until(s=>ExpectedConditions.ElementToBeClickable(GetVehicleSelection(id)));
-            GetVehicleSelection(id)?.Click();
+            wait =new DefaultWait<IWebDriver>(driver);
+            wait.PollingInterval = TimeSpan.FromMilliseconds(100);
+            wait.Timeout = TimeSpan.FromSeconds(10);
+            wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+            wait.Until(s=>ExpectedConditions.ElementToBeClickable(GetVehicleSelection(id)));
+            IJavaScriptExecutor js=(IJavaScriptExecutor) driver;
+            js.ExecuteScript("window.scrollBy(0,300)");
+            js.ExecuteScript("arguments[0].click()", GetVehicleSelection(id));
+            //GetVehicleSelection(id)?.Click();
         }
         [FindsBy(How = How.XPath,Using ="(//div[@class='input-container'])[position()=1]")]
         private IWebElement? DateInput {  get; set; }

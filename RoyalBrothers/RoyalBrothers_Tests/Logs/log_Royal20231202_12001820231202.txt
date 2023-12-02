@@ -1,0 +1,5 @@
+2023-12-02 12:00:33.989 +05:30 [INF] StoreLink Clicked
+2023-12-02 12:00:38.178 +05:30 [INF] Search Button Clicked
+2023-12-02 12:00:48.464 +05:30 [INF] Item Searched
+2023-12-02 12:00:52.563 +05:30 [INF] Item Sorted
+2023-12-02 12:01:17.357 +05:30 [INF] Add To Cart Clicked

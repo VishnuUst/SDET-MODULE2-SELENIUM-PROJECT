@@ -1,0 +1,12 @@
+2023-12-02 11:26:14.831 +05:30 [INF] StoreLink Clicked
+2023-12-02 11:26:18.967 +05:30 [INF] Search Button Clicked
+2023-12-02 11:26:28.086 +05:30 [INF] Item Searched
+2023-12-02 11:26:32.151 +05:30 [INF] Item Sorted
+2023-12-02 11:26:52.614 +05:30 [INF] Add To Cart Clicked
+2023-12-02 11:27:07.430 +05:30 [INF] The Search Item And Product Checkout Working - Test Passed
+2023-12-02 11:27:21.356 +05:30 [INF] StoreLink Clicked
+2023-12-02 11:27:25.457 +05:30 [INF] Search Button Clicked
+2023-12-02 11:27:35.201 +05:30 [INF] Item Searched
+2023-12-02 11:27:39.256 +05:30 [INF] Item Sorted
+2023-12-02 11:27:59.862 +05:30 [INF] Add To Cart Clicked
+2023-12-02 11:28:14.417 +05:30 [INF] The Search Item And Product Checkout Working - Test Passed
